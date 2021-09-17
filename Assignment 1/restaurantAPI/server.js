@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+const RestaurantDB = require('./modules/restaurantDB.js');
+const db = new RestaurantDB();
 const app = express();
 const HTTP_PORT = process.env.PORT || 6060;
 
