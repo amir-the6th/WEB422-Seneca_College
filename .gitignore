@@ -75,3 +75,4 @@ typings/
 # FuseBox cache
 .fusebox/
 Assignment 1/restaurantAPI/restaurantAPI.zip
+*.zip
