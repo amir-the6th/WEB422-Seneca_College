@@ -38,5 +38,58 @@ function loadRestauarantData() {
 
 $(function () {
   loadRestauarantData();
-  $('.restaurant-table tbody').on('click', 'tr', function () {});
+  // Click event for all tr elements within the tbody of the restaurant-table
+  $('.restaurant-table tbody').on('click', 'tr', function () {
+    currentRestaurant = restaurantData.find(
+      (rest) => rest._id == $(this).attr('data-id') ////////// NOT SURE ///////////
+    );
+    $('#modal-title').html(`${currentRestaurant.name}`); ////////// NOT SURE ///////////
+    $('.restaurant-address').html(
+      `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
+    );
+    $('.restaurant-modal').modal({
+      // show the modal programmatically
+      backdrop: 'static', // disable clicking on the backdrop to close
+      keyboard: false, // disable using the keyboard to close
+    });
+  });
+
+  // Click event for the "previous page" pagination button
+  $('.previous-page').on('click', function () {
+    if (page > 1) {
+      page--;
+      loadRestauarantData();
+    }
+  });
+
+  // Click event for the "next page" pagination button
+  $('.next-page').on('click', function () {
+    if (page > 1) {
+      page++;
+      loadRestauarantData();
+    }
+  });
+
+  // shown.bs.modal event for the "Restaurant" modal window
+  $('#restaurant-modal').on('shown.bs.modal', function () {
+    map = new L.Map('leaflet', {
+      center: [
+        currentRestaurant.address.coord[1],
+        currentRestaurant.address.coord[0],
+      ],
+      zoom: 18,
+      layers: [
+        new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+      ],
+    });
+    L.marker([
+      currentRestaurant.address.coord[1],
+      currentRestaurant.address.coord[0],
+    ]).addTo(map);
+  });
+
+  // hidden.bs.modal event for the "Restaurant" modal window
+  $('#restaurant-modal').on('hidden.bs.modal', function () {
+    map.remove();
+  });
 });
