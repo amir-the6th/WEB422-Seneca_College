@@ -13,6 +13,7 @@ const cors = require('cors');
 const RestaurantDB = require('./modules/restaurantDB.js');
 const db = new RestaurantDB();
 const app = express();
+const path = require('path');
 const HTTP_PORT = process.env.PORT || 6060;
 const dotenv = require('dotenv').config();
 const mongoLogin = process.env.MONGODB_CONN_STRING;
@@ -24,7 +25,8 @@ app.use(cors());
 
 // Deliver the app's home page to browser clients
 app.get('/', (req, res) => {
-  res.json({ message: 'API Listening' });
+  //res.json({ message: 'API Listening' });
+  res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 /* This route returns all "Restaurant" objects for a specific "page" to
