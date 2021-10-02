@@ -8,32 +8,42 @@ let page = 1;
 // the number of restaurant items we wish to view on each page of our application
 const perPage = 10;
 
-//a reference to our current "map".
+//a reference to our current "map" object (leaflet).
 let map = null;
 
 // calculate the average score
-function avg(grades) {}
+function avg(grades) {
+  let sum = 0;
+  for (let i = 0; i < grades.length; i++) {
+    sum += grades[i].score;
+  }
+  var avg = sum / grades.length;
+  return avg.toFixed(2);
+}
 
-let tableRows = _.template(`
-    <% restData.forEach(function(rest) { %>
+const tableRows = _.template(`
+    <% _.forEach(restaurants, function(rest) { %> /////////////////////////////////
         <tr data-id="<%- rest._id %>">
             <td><%- rest.name %></td>
             <td><%- rest.cuisine %></td>
             <td><%- rest.address.building %> <%- rest.address.street %></td>
-            <td> avg(grades) </td> ///////// NOT SURE ABOUT THIS ///////// 
+            <td><%- avg(rest.grades) %></td> ///////// NOT SURE ABOUT THIS ///////// 
         </tr>
-    %> }); %>
+    <% }); %>
 `);
 
 function loadRestauarantData() {
-  fetch('/api/restaurants?page=page&perPage=perPage')
+  fetch(
+    `https://enigmatic-forest-52710.herokuapp.com/api/restaurants?page=${page}&perPage=${perPage}`
+  )
     .then((response) => response.json())
     .then((data) => {
       restaurantData = data;
       let tableRowsResult = tableRows({ restaurants: data });
       $('.restaurant-table tbody').html(tableRowsResult); ////////// NOT SURE ///////////
       $('.current-page').html(page);
-    });
+    })
+    .catch((err) => console.error('Unable to load restaurants data:', err));
 }
 
 $(function () {
