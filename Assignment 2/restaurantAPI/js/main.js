@@ -22,12 +22,12 @@ function avg(grades) {
 }
 
 const tableRows = _.template(`
-    <% _.forEach(restaurants, function(rest) { %> /////////////////////////////////
-        <tr data-id="<%- rest._id %>">
+    <% _.forEach(restaurantData, function(rest) { %> /////////////////////////////////
+        <tr data-id=<%- rest._id %>>
             <td><%- rest.name %></td>
             <td><%- rest.cuisine %></td>
             <td><%- rest.address.building %> <%- rest.address.street %></td>
-            <td><%- avg(rest.grades) %></td> ///////// NOT SURE ABOUT THIS ///////// 
+            <td><%- avg(rest.grades) %></td>
         </tr>
     <% }); %>
 `);
@@ -39,67 +39,69 @@ function loadRestauarantData() {
     .then((response) => response.json())
     .then((data) => {
       restaurantData = data;
-      let tableRowsResult = tableRows({ restaurants: data });
-      $('.restaurant-table tbody').html(tableRowsResult); ////////// NOT SURE ///////////
-      $('.current-page').html(page);
+      //let tableRowsResult = tableRows({ restaurants: data });
+      let tableRowsResult = tableRows(restaurantData);
+      $('#restaurant-table tbody').html(tableRowsResult); ////////// NOT SURE ///////////
+      $('#current-page').html(page);
     })
     .catch((err) => console.error('Unable to load restaurants data:', err));
 }
 
-$(function () {
-  loadRestauarantData();
-  // Click event for all tr elements within the tbody of the restaurant-table
-  $('.restaurant-table tbody').on('click', 'tr', function () {
-    currentRestaurant = restaurantData.find(
-      (rest) => rest._id == $(this).attr('data-id') ////////// NOT SURE ///////////
-    );
-    $('#modal-title').html(`${currentRestaurant.name}`); ////////// NOT SURE ///////////
-    $('.restaurant-address').html(
-      `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
-    );
-    $('.restaurant-modal').modal({
-      // show the modal programmatically
-      backdrop: 'static', // disable clicking on the backdrop to close
-      keyboard: false, // disable using the keyboard to close
-    });
+// Click event for all tr elements within the tbody of the restaurant-table
+$('#restaurant-table tbody').on('click', 'tr', function () {
+  currentRestaurant = restaurantData.find(
+    (rest) => rest._id == $(this).attr('data-id') ////////// NOT SURE ///////////
+  );
+  $('.modal-title').html(`${currentRestaurant.name}`); ////////// NOT SURE ///////////
+  $('#restaurant-address').html(
+    `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
+  );
+  $('#restaurant-modal').modal({
+    // show the modal programmatically
+    backdrop: 'static', // disable clicking on the backdrop to close
+    keyboard: false, // disable using the keyboard to close
   });
+});
 
-  // Click event for the "previous page" pagination button
-  $('.previous-page').on('click', function () {
-    if (page > 1) {
-      page--;
-      loadRestauarantData();
-    }
-  });
+// Click event for the "previous page" pagination button
+$('#previous-page').on('click', function () {
+  if (page > 1) {
+    page--;
+    loadRestauarantData();
+  }
+});
 
-  // Click event for the "next page" pagination button
-  $('.next-page').on('click', function () {
-    if (page > 1) {
-      page++;
-      loadRestauarantData();
-    }
-  });
+// Click event for the "next page" pagination button
+$('#next-page').on('click', function () {
+  if (page > 1) {
+    page++;
+    loadRestauarantData();
+  }
+});
 
-  // shown.bs.modal event for the "Restaurant" modal window
-  $('#restaurant-modal').on('shown.bs.modal', function () {
-    map = new L.Map('leaflet', {
-      center: [
-        currentRestaurant.address.coord[1],
-        currentRestaurant.address.coord[0],
-      ],
-      zoom: 18,
-      layers: [
-        new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
-      ],
-    });
-    L.marker([
+// shown.bs.modal event for the "Restaurant" modal window
+$('#restaurant-modal').on('shown.bs.modal', function () {
+  map = new L.Map('leaflet', {
+    center: [
       currentRestaurant.address.coord[1],
       currentRestaurant.address.coord[0],
-    ]).addTo(map);
+    ],
+    zoom: 18,
+    layers: [
+      new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+    ],
   });
+  L.marker([
+    currentRestaurant.address.coord[1],
+    currentRestaurant.address.coord[0],
+  ]).addTo(map);
+});
 
-  // hidden.bs.modal event for the "Restaurant" modal window
-  $('#restaurant-modal').on('hidden.bs.modal', function () {
-    map.remove();
-  });
+// hidden.bs.modal event for the "Restaurant" modal window
+$('#restaurant-modal').on('hidden.bs.modal', function () {
+  map.remove();
+});
+
+$(function () {
+  loadRestauarantData();
 });
