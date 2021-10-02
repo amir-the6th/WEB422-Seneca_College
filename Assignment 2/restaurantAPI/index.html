@@ -19,33 +19,11 @@
       crossorigin=""
     />
     <!-- main.css -->
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <!-- jQuery 3.4.1 slim, minified JS file (using the CDN -
-    https://code.jquery.com/) -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"
-    ></script>
-    <!-- Bootstrap 3.4.1 Minified JS File (Using the CDN) -->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Lodash 4.17.5 Minified JS File (Using the CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-    <!-- Leaflet JS -->
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
-    <!-- main.js -->
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
     <title>Assignment 2</title>
   </head>
   <body>
+    <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -77,6 +55,7 @@
       </div>
       <!-- /.container-fluid -->
     </nav>
+    <!-- Main Table -->
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -91,6 +70,7 @@
             </thead>
             <tbody></tbody>
           </table>
+          <!-- Pagination Feature -->
           <nav aria-label="Page navigation">
             <ul class="pagination">
               <li>
@@ -109,6 +89,7 @@
         </div>
       </div>
     </div>
+    <!-- "Generic" Modal Window Container -->
     <div class="modal fade" tabindex="-1" role="dialog" id="restaurant-modal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,5 +119,29 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    <!-- jQuery 3.4.1 slim, minified JS file (using the CDN -
+    https://code.jquery.com/) -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap 3.4.1 Minified JS File (Using the CDN) -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Lodash 4.17.5 Minified JS File (Using the CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <!-- main.js -->
+    <script src="js/main.js"></script>
   </body>
 </html>
