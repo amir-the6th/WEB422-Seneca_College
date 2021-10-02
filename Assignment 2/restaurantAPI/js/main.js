@@ -32,7 +32,7 @@ const tableRows = _.template(`
     <% }); %>
 `);
 
-function loadRestauarantData() {
+function loadRestaurantData() {
   fetch(
     `https://enigmatic-forest-52710.herokuapp.com/api/restaurants?page=${page}&perPage=${perPage}`
   )
@@ -56,6 +56,7 @@ $('#restaurant-table tbody').on('click', 'tr', function () {
   $('#restaurant-address').html(
     `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
   );
+  $('#restaurant-borough').html(currentRestaurant.borough);
   $('#restaurant-modal').modal({
     // show the modal programmatically
     backdrop: 'static', // disable clicking on the backdrop to close
@@ -67,16 +68,14 @@ $('#restaurant-table tbody').on('click', 'tr', function () {
 $('#previous-page').on('click', function () {
   if (page > 1) {
     page--;
-    loadRestauarantData();
+    loadRestaurantData();
   }
 });
 
 // Click event for the "next page" pagination button
 $('#next-page').on('click', function () {
-  if (page > 1) {
-    page++;
-    loadRestauarantData();
-  }
+  page++;
+  loadRestaurantData();
 });
 
 // shown.bs.modal event for the "Restaurant" modal window
@@ -103,5 +102,5 @@ $('#restaurant-modal').on('hidden.bs.modal', function () {
 });
 
 $(function () {
-  loadRestauarantData();
+  loadRestaurantData();
 });
