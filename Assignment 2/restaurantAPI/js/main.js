@@ -1,3 +1,12 @@
+/*********************************************************************************************
+ * WEB422 – Assignment 2
+ * I declare that this assignment is my own work in accordance with Seneca Academic Policy.
+ * No part of this assignment has been copied manually or electronically from any other source
+ * (including web sites) or distributed to other students.
+ *
+ * Name: Amirhossein Sabagh     Student ID: 152956199     Date: 2021-10-01
+ *
+ * ******************************************************************************************/
 let restaurantData = [];
 
 let currentRestaurant = {};
@@ -56,7 +65,7 @@ $('#restaurant-table tbody').on('click', 'tr', function () {
   $('#restaurant-address').html(
     `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
   );
-  $('#restaurant-borough').html(currentRestaurant.borough);
+  $('<div id="restaurant-borough"></div>').html(currentRestaurant.borough);
   $('#restaurant-modal').modal({
     // show the modal programmatically
     backdrop: 'static', // disable clicking on the backdrop to close
