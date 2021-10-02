@@ -65,7 +65,7 @@ $('#restaurant-table tbody').on('click', 'tr', function () {
   $('#restaurant-address').html(
     `${currentRestaurant.address.building} ${currentRestaurant.address.street}`
   );
-  $('<div id="restaurant-borough"></div>').html(currentRestaurant.borough);
+  $('#restaurant-borough').html(currentRestaurant.borough);
   $('#restaurant-modal').modal({
     // show the modal programmatically
     backdrop: 'static', // disable clicking on the backdrop to close
