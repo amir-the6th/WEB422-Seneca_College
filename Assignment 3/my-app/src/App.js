@@ -11,6 +11,10 @@ import {
 } from 'react-bootstrap';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import About from './About';
+import Restaurants from './Restaurants';
+import Restaurant from './Restaurant';
+import NotFound from './NotFound';
 
 function App() {
   const [searchString, setSearchString] = '';
@@ -53,6 +57,29 @@ function App() {
         </Navbar.Collapse>
       </Navbar>
       <br />
+      <Container>
+        <Row>
+          <Col>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/restaurants" />
+              </Route>
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route exact path="/restaurants">
+                <Restaurants />
+              </Route>
+              <Route path="/restaurant/:id">
+                <Restaurant />
+              </Route>
+              <Route>
+                <NotFound />
+              </Route>
+            </Switch>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
