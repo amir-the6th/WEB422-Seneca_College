@@ -11,13 +11,14 @@ import {
 } from 'react-bootstrap';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useState, useEffect } from 'react';
 import About from './About';
 import Restaurants from './Restaurants';
 import Restaurant from './Restaurant';
 import NotFound from './NotFound';
 
 function App() {
-  const [searchString, setSearchString] = '';
+  const [searchString, setSearchString] = useState('');
   let history = useHistory();
 
   function handleSubmit(e) {
