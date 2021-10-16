@@ -11,7 +11,7 @@ import {
 } from 'react-bootstrap';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import About from './About';
 import Restaurants from './Restaurants';
 import Restaurant from './Restaurant';
