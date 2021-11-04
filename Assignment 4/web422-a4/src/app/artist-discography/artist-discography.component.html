@@ -1,0 +1,32 @@
+<mat-card
+  [style.background]="
+    'url(' + 'https://via.placeholder.com/640' + ') no-repeat center center'
+  "
+  [style.background-size]="'cover'"
+  [style.height]="'450px'"
+>
+</mat-card>
+<br /><br />
+<h1>Full Discography</h1>
+
+<div fxLayout="row wrap" fxLayout.xs="column">
+  <!-- Single "Responsive" Card-->
+  <div fxFlex [style.margin]="'20px'">
+    <mat-card [style.min-width]="'200px'">
+      <mat-card-header>
+        <mat-card-title>This is a Sample Album Title</mat-card-title>
+        <mat-card-subtitle>Album Title</mat-card-subtitle>
+      </mat-card-header>
+
+      <img
+        mat-card-image
+        class="album-cover"
+        src="https://via.placeholder.com/640"
+        alt="album art"
+      />
+      <strong>Release Date: </strong>2021/02/12<br />
+      <strong>Tracks: </strong>22
+    </mat-card>
+  </div>
+  <!-- -->
+</div>
