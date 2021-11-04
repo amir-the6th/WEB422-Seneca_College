@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-content fxLayout="row wrap" fxLayout.xs="column">
+    <div fxflex>
+      <img
+        src="https://via.placeholder.com/300"
+        alt="album cover"
+        [style.margin]="'10px'"
+        [style.max-width]="'90%'"
+      />
+    </div>
+    <div fxFlex>
+      <div [style.min-width]="'300px'" [style.margin]="'10px'">
+        <strong>Record Label: </strong> This is a Sample Record Label<br />
+        <strong>Release Date: </strong> 2021-02-12<br /><br />
+        <strong>Tracks:</strong> 22<br />
+        <strong>Popularity: </strong>77<br /><br />
+
+        <mat-chip-list aria-label="Artist selection">
+          <mat-chip>This is the Artist's Name</mat-chip>
+          <mat-chip>Possible Second Artist</mat-chip>
+        </mat-chip-list>
+        <br />
+
+        <div>This is a sample Copyright &copy; 2012</div>
+        <div>Possible Second Copyright</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<br /><br />
+<h2>Track Listing</h2>
+
+<mat-list>
+  <!-- Single "Responsive" Material List Item-->
+  <mat-list-item>
+    <mat-icon mat-list-icon>queue_music</mat-icon>
+    <div mat-line>
+      <mat-card>
+        <mat-card-content
+          >1: This is the First Track of the Album - 3.34
+          <!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-list-item>
+  <!-- -->
+</mat-list>
