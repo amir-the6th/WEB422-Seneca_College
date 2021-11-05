@@ -4,13 +4,13 @@
     <div fxFlex [style.margin]="'20px'">
       <mat-card [style.min-width]="'200px'">
         <mat-card-header>
-          <mat-card-title>This is a Sample Album Title</mat-card-title>
+          <mat-card-title>{{ releases[0].name }}</mat-card-title>
           <mat-card-subtitle>New Release</mat-card-subtitle>
         </mat-card-header>
         <img
           mat-card-image
           class="album-cover"
-          src="https://via.placeholder.com/640"
+          src="{{ releases[0].images[0].url }}"
           alt="album art"
         />
         <strong>Release Date: </strong>2/22/21<br />
