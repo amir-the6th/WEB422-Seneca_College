@@ -7,7 +7,7 @@ import data from '../data/NewReleasesAlbums.json';
   styleUrls: ['./new-releases.component.css'],
 })
 export class NewReleasesComponent implements OnInit {
-  releases = {};
+  releases!: any[];
 
   constructor() {}
 
