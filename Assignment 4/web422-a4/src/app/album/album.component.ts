@@ -7,7 +7,7 @@ import albumData from '../data/SearchResultsAlbum.json';
   styleUrls: ['./album.component.css'],
 })
 export class AlbumComponent implements OnInit {
-  album = {};
+  album: any;
 
   constructor() {}
 
