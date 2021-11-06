@@ -1,3 +1,11 @@
+<div>
+  <h1 class="new-releases">New Releases</h1>
+  <p>
+    The following is a list of new releases. <br />
+    Click the <b>album cover</b> or <b>artist name</b> for more information
+  </p>
+</div>
+
 <div class="content">
   <div fxLayout="row wrap" fxLayout.xs="column">
     <!-- Single "Responsive" Card-->
@@ -15,7 +23,7 @@
             }}</mat-card-title>
             <mat-card-subtitle>New Release</mat-card-subtitle>
           </mat-card-header>
-          <a [routerLink]="['/album/' + item.id]">
+          <a [routerLink]="['/album/']">
             <img
               mat-card-image
               class="album-cover"
@@ -30,7 +38,7 @@
               aria-label="Artist selection"
               *ngFor="let artist of item.artists"
             >
-              <a [routerLink]="['/artist/' + artist.id]">
+              <a href="/artist">
                 <mat-chip>{{ artist.name }}</mat-chip>
               </a> </mat-chip-list
             ><br />
@@ -43,7 +51,6 @@
                 >hearing</mat-icon
               >
             </a>
-            <!-- <img src="../../assets/spotify-icon-png-15398.png" width="20px" /> -->
           </mat-card-content>
         </mat-card>
       </div>
