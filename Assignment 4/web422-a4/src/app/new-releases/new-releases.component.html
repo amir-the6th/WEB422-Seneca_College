@@ -1,28 +1,52 @@
 <div class="content">
   <div fxLayout="row wrap" fxLayout.xs="column">
     <!-- Single "Responsive" Card-->
-    <div fxFlex [style.margin]="'20px'">
-      <mat-card [style.min-width]="'200px'">
-        <mat-card-header>
-          <mat-card-title>{{ releases[0].name }}</mat-card-title>
-          <mat-card-subtitle>New Release</mat-card-subtitle>
-        </mat-card-header>
-        <img
-          mat-card-image
-          class="album-cover"
-          src="{{ releases[0].images[0].url }}"
-          alt="album art"
-        />
-        <strong>Release Date: </strong>2/22/21<br />
-        <strong>Tracks: </strong>11<br /><br />
-        <mat-card-content>
-          <mat-chip-list aria-label="Artist selection">
-            <mat-chip>This is the Artist's Name</mat-chip>
-            <mat-chip>Possible Second Artist</mat-chip>
-          </mat-chip-list>
-        </mat-card-content>
-      </mat-card>
-    </div>
+    <ng-template ngFor let-item [ngForOf]="releases">
+      <!-- shorter version: *ngFor="let item of releases" -->
+      <div fxFlex [style.margin]="'20px'" fxLayoutAlign="start start">
+        <mat-card
+          [style.min-width]="'200px'"
+          [style.padding-bottom]="'3em'"
+          fxFlexAlign="stretch"
+        >
+          <mat-card-header [style.margin-bottom]="'2em'">
+            <mat-card-title class="mat-card-title">{{
+              item.name
+            }}</mat-card-title>
+            <mat-card-subtitle>New Release</mat-card-subtitle>
+          </mat-card-header>
+          <a [routerLink]="['/album/' + item.id]">
+            <img
+              mat-card-image
+              class="album-cover"
+              src="{{ item.images[0].url }}"
+              alt="album art"
+            />
+          </a>
+          <strong>Release Date: </strong>{{ item.release_date }}<br />
+          <strong>Tracks: </strong>{{ item.total_tracks }}<br /><br />
+          <mat-card-content>
+            <mat-chip-list
+              aria-label="Artist selection"
+              *ngFor="let artist of item.artists"
+            >
+              <a [routerLink]="['/artist/' + artist.id]">
+                <mat-chip>{{ artist.name }}</mat-chip>
+              </a> </mat-chip-list
+            ><br />
+            <strong>Listen on Spotify: </strong>
+            <a href="{{ item.external_urls.spotify }}" target="_blank">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                class="green-icon"
+                >hearing</mat-icon
+              >
+            </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-template>
     <!-- -->
   </div>
 </div>
