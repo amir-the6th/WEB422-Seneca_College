@@ -24,7 +24,14 @@ import { AlbumComponent } from './album/album.component';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, NotFoundComponent, NewReleasesComponent, AlbumComponent, ArtistDiscographyComponent],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    NotFoundComponent,
+    NewReleasesComponent,
+    AlbumComponent,
+    ArtistDiscographyComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
