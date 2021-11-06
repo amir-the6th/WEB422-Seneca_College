@@ -1,8 +1,14 @@
+<div>
+  <h1>{{ album.name }}</h1>
+  <p>Full track listing for {{ album.name }}</p>
+  <br />
+</div>
+
 <mat-card>
   <mat-card-content fxLayout="row wrap" fxLayout.xs="column">
     <div fxflex>
       <img
-        src="https://via.placeholder.com/300"
+        src="{{ album.images[1].url }}"
         alt="album cover"
         [style.margin]="'10px'"
         [style.max-width]="'90%'"
@@ -10,19 +16,30 @@
     </div>
     <div fxFlex>
       <div [style.min-width]="'300px'" [style.margin]="'10px'">
-        <strong>Record Label: </strong> This is a Sample Record Label<br />
-        <strong>Release Date: </strong> 2021-02-12<br /><br />
-        <strong>Tracks:</strong> 22<br />
-        <strong>Popularity: </strong>77<br /><br />
+        <strong>Record Label: </strong> {{ album.label }}<br />
+        <strong>Release Date: </strong> {{ album.release_date }}<br /><br />
+        <strong>Tracks:</strong> {{ album.total_tracks }}<br />
+        <strong>Popularity: </strong>{{ album.popularity }}<br /><br />
 
-        <mat-chip-list aria-label="Artist selection">
-          <mat-chip>This is the Artist's Name</mat-chip>
-          <mat-chip>Possible Second Artist</mat-chip>
+        <mat-chip-list
+          aria-label="Artist selection"
+          *ngFor="let artist of album.artists"
+        >
+          <a href="/artist">
+            <mat-chip>{{ artist.name }}</mat-chip>
+          </a>
         </mat-chip-list>
         <br />
 
-        <div>This is a sample Copyright &copy; 2012</div>
-        <div>Possible Second Copyright</div>
+        <div *ngFor="let copyright of album.copyrights">
+          {{ copyright.text }}
+        </div>
+        <br /><br />
+        <div>
+          <a href="{{ album.external_urls.spotify }}" target="_blank">
+            <img src="../../assets/spotify-icon-png-15398.png" width="30px" />
+          </a>
+        </div>
       </div>
     </div>
   </mat-card-content>
@@ -32,12 +49,13 @@
 
 <mat-list>
   <!-- Single "Responsive" Material List Item-->
-  <mat-list-item>
+  <mat-list-item *ngFor="let item of album.tracks.items">
     <mat-icon mat-list-icon>queue_music</mat-icon>
     <div mat-line>
       <mat-card>
         <mat-card-content
-          >1: This is the First Track of the Album - 3.34
+          >{{ item.track_number }} {{ item.name }} 4 -
+          {{ (item.duration_ms / 60000).toFixed(2) }}
           <!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
         </mat-card-content>
       </mat-card>
