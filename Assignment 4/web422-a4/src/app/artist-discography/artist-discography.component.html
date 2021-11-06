@@ -1,22 +1,30 @@
 <div>
-  <h1>{{ artist.name }}</h1>
+  <h1 class="artist-name">{{ artist.name }}</h1>
   <p>
-    Full discography for {{ artist.name }}<br />
+    Full discography for
+    <strong
+      ><a href="{{ artist.external_urls.spotify }}">
+        {{ artist.name }}</a
+      ></strong
+    ><br />
     Click the album cover for more information.
   </p>
   <br />
 </div>
 
-<mat-card
-  [style.background]="
-    'url(' + artist.images[0].url + ') no-repeat center center'
-  "
-  [style.background-size]="'cover'"
-  [style.height]="'550px'"
->
-</mat-card>
+<a href="{{ artist.external_urls.spotify }}">
+  <mat-card
+    [style.background]="
+      'url(' + artist.images[0].url + ') no-repeat center center'
+    "
+    [style.background-size]="'cover'"
+    [style.height]="'550px'"
+  >
+  </mat-card>
+</a>
 <br /><br />
-<h2>Full Discography</h2>
+<h2 class="full-discography">Full Discography</h2>
+<hr />
 
 <div fxLayout="row wrap" fxLayout.xs="column">
   <!-- Single "Responsive" Card-->
@@ -26,13 +34,17 @@
     *ngFor="let album of albums"
     fxLayoutAlign="start start"
   >
-    <mat-card [style.min-width]="'200px'" fxFlexAlign="stretch">
-      <mat-card-header>
+    <mat-card
+      [style.min-width]="'200px'"
+      fxFlexAlign="stretch"
+      [style.padding-bottom]="'3em'"
+    >
+      <mat-card-header [style.margin-bottom]="'2em'">
         <mat-card-title>{{ album.name }}</mat-card-title>
         <mat-card-subtitle>Album Title</mat-card-subtitle>
       </mat-card-header>
 
-      <a [routerLink]="['/album/' + album.id]">
+      <a [routerLink]="['/album/']">
         <img
           mat-card-image
           class="album-cover"
