@@ -14,9 +14,9 @@ export class ArtistDiscographyComponent implements OnInit {
 
   ngOnInit(): void {
     this.albums = albumData.items.filter(
-      (curValue, index, self) =>
+      (curValue: any, index: any, self: any) =>
         self.findIndex(
-          (t) => t.name.toUpperCase() === curValue.name.toUpperCase()
+          (t: any) => t.name.toUpperCase() === curValue.name.toUpperCase()
         ) === index
     );
 
