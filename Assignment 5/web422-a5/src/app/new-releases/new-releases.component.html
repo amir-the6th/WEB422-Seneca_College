@@ -23,7 +23,7 @@
             }}</mat-card-title>
             <mat-card-subtitle>New Release</mat-card-subtitle>
           </mat-card-header>
-          <a [routerLink]="['/album/']">
+          <a [routerLink]="['/album/', item.id]">
             <img
               mat-card-image
               class="album-cover"
@@ -38,12 +38,12 @@
               aria-label="Artist selection"
               *ngFor="let artist of item.artists"
             >
-              <a href="/artist">
+              <a [routerLink]="['/artist/', artist.id]">
                 <mat-chip>{{ artist.name }}</mat-chip>
               </a> </mat-chip-list
             ><br />
             <strong>Listen on Spotify: </strong>
-            <a href="{{ item.external_urls.spotify }}" target="_blank">
+            <a [routerLink]="[item.external_urls.spotify]" target="_blank">
               <mat-icon
                 aria-hidden="false"
                 aria-label="Example home icon"

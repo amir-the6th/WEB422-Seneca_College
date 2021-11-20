@@ -25,7 +25,7 @@
           aria-label="Artist selection"
           *ngFor="let artist of album.artists"
         >
-          <a href="/artist">
+          <a [routerLink]="['/artist']">
             <mat-chip>{{ artist.name }}</mat-chip>
           </a>
         </mat-chip-list>
@@ -36,7 +36,7 @@
         </div>
         <br /><br />
         <div>
-          <a href="{{ album.external_urls.spotify }}" target="_blank">
+          <a [routerLink]="[album.external_urls.spotify]" target="_blank">
             <img src="../../assets/spotify-icon-png-15398.png" width="30px" />
           </a>
         </div>
