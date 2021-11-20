@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import data from '../data/NewReleasesAlbums.json';
+import { MusicDataService } from '../music-data.service';
 
 @Component({
   selector: 'app-new-releases',
@@ -7,11 +9,21 @@ import data from '../data/NewReleasesAlbums.json';
   styleUrls: ['./new-releases.component.css'],
 })
 export class NewReleasesComponent implements OnInit {
-  releases!: any[];
+  releases: Array<any> | undefined;
+  //dataSubscribe: any;
+  dataSubscribe: Subscription | undefined;
 
-  constructor() {}
+  constructor(private musicDataService: MusicDataService) {}
 
   ngOnInit(): void {
-    this.releases = data.albums.items;
+    this.dataSubscribe = this.musicDataService
+      .getNewReleases()
+      .subscribe((data) => {
+        this.releases = data.albums.items;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscribe?.unsubscribe();
   }
 }
