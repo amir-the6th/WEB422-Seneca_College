@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import data from '../data/NewReleasesAlbums.json';
+//import data from '../data/NewReleasesAlbums.json';
 import { MusicDataService } from '../music-data.service';
 
 @Component({
