@@ -48,4 +48,9 @@ export class ArtistDiscographyComponent implements OnInit {
         ) === index
     );
   }
+
+  ngOnDestroy() {
+    this.albumsSubscribe?.unsubscribe();
+    this.artistSubscribe?.unsubscribe();
+  }
 }
