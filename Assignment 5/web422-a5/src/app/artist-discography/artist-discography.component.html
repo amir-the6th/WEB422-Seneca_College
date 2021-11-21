@@ -3,7 +3,7 @@
   <p>
     Full discography for
     <strong
-      ><a [routerLink]="[artist.external_urls.spotify]">
+      ><a href="{{ artist.external_urls.spotify }}">
         {{ artist.name }}</a
       ></strong
     ><br />
@@ -12,7 +12,7 @@
   <br />
 </div>
 
-<a [routerLink]="[artist.external_urls.spotify]">
+<a href="{{ artist.external_urls.spotify }}">
   <mat-card
     [style.background]="
       'url(' + artist.images[0].url + ') no-repeat center center'
