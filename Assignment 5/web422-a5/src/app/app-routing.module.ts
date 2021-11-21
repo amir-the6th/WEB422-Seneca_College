@@ -8,8 +8,8 @@ import { ArtistDiscographyComponent } from './artist-discography/artist-discogra
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
-  { path: 'album', component: AlbumComponent },
-  { path: 'artist', component: ArtistDiscographyComponent },
+  { path: 'album/:id', component: AlbumComponent },
+  { path: 'artist/:id', component: ArtistDiscographyComponent },
   { path: 'newReleases', component: NewReleasesComponent },
   { path: '', redirectTo: '/newReleases', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
