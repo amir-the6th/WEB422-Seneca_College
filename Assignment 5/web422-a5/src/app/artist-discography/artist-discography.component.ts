@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import albumData from '../data/SearchResultsAlbums.json';
 import artistData from '../data/SearchResultsArtist.json';
+import { MusicDataService } from '../music-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-artist-discography',
@@ -8,18 +11,41 @@ import artistData from '../data/SearchResultsArtist.json';
   styleUrls: ['./artist-discography.component.css'],
 })
 export class ArtistDiscographyComponent implements OnInit {
-  albums: any;
-  artist: any;
-  constructor() {}
+  albums: Array<any> | undefined;
+  artist: Array<any> | undefined;
+  private albumsSubscribe: Subscription | undefined;
+  private artistSubscribe: Subscription | undefined;
+  private id: any;
+
+  constructor(
+    private musicDataService: MusicDataService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.artistSubscribe = this.musicDataService
+      .getArtistById(this.id)
+      .subscribe((data) => {
+        return (this.artist = data);
+      });
+
+    this.albumsSubscribe = this.musicDataService
+      .getAlbumsByArtistId(this.id)
+      .subscribe((data) => {
+        return (this.albums = data.items.filter(
+          (curValue: any, index: any, self: any) =>
+            self.findIndex(
+              (t: any) => t.name.toUpperCase() === curValue.name.toUpperCase()
+            ) === index
+        ));
+      });
+
     this.albums = albumData.items.filter(
       (curValue: any, index: any, self: any) =>
         self.findIndex(
           (t: any) => t.name.toUpperCase() === curValue.name.toUpperCase()
         ) === index
     );
-
-    this.artist = artistData;
   }
 }
