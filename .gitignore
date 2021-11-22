@@ -77,3 +77,5 @@ typings/
 Assignment 1/restaurantAPI/restaurantAPI.zip
 *.zip
 *.mp4
+Assignment 5/web422-a5/src/environments/environment.prod.ts
+Assignment 5/web422-a5/src/environments/environment.ts
