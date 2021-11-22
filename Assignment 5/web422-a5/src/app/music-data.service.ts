@@ -9,7 +9,7 @@ import { mergeMap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class MusicDataService {
-  private favouritesList: Array<any> = [];
+  favouritesList: Array<any> = [];
 
   constructor(
     private spotifyToken: SpotifyTokenService,
