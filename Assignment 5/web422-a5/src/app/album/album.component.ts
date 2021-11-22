@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MusicDataService } from '../music-data.service';
-import albumData from '../data/SearchResultsAlbum.json';
 
 @Component({
   selector: 'app-album',
@@ -11,8 +10,10 @@ import albumData from '../data/SearchResultsAlbum.json';
   styleUrls: ['./album.component.css'],
 })
 export class AlbumComponent implements OnInit {
-  album: Array<any> | undefined;
-  private albumSubscribe: Subscription | undefined;
+  //album: Array<any>;
+  private albumSubscribe!: Subscription;
+  album: any;
+  //private albumSubscribe: any;
   private id: any;
 
   constructor(
