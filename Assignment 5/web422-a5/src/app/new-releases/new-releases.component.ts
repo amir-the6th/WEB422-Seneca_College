@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 //import data from '../data/NewReleasesAlbums.json';
 import { MusicDataService } from '../music-data.service';
@@ -8,7 +8,7 @@ import { MusicDataService } from '../music-data.service';
   templateUrl: './new-releases.component.html',
   styleUrls: ['./new-releases.component.css'],
 })
-export class NewReleasesComponent implements OnInit {
+export class NewReleasesComponent implements OnInit, OnDestroy {
   releases: Array<any> | undefined;
   //dataSubscribe: any;
   dataSubscribe: Subscription | undefined;
