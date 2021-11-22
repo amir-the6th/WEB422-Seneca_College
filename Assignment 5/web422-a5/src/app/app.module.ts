@@ -23,14 +23,22 @@ import { NewReleasesComponent } from './new-releases/new-releases.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+    NewReleasesComponent,
     AboutComponent,
     NotFoundComponent,
-    NewReleasesComponent,
     AlbumComponent,
     ArtistDiscographyComponent,
+    SearchResultComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,10 @@ import { ArtistDiscographyComponent } from './artist-discography/artist-discogra
     MatCardModule,
     MatChipsModule,
     FlexLayoutModule,
+
+    HttpClientModule,
+    FormsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
