@@ -79,9 +79,9 @@ export class MusicDataService {
 
   addToFavourites(id: string): Observable<[String]> {
     // TODO: make a PUT request to environment.userAPIBase/favourites/:id to add id to favourites
-    return this.http.put<any>(
+    return this.http.put<[string]>(
       `${environment.userAPIBase}/favourites/${id}`,
-      {}
+      id
     );
   }
 
