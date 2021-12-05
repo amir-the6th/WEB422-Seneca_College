@@ -6,6 +6,10 @@
  *
  * Name: Amirhossein Sabagh     Student ID: 152956199     Date: 2021-12-04
  *
+ * Angular App (Deployed) Link:
+ *
+ * User API (Heroku) Link: https://rocky-everglades-29738.herokuapp.com
+ *
  * ******************************************************************************************/
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart } from '@angular/router';
