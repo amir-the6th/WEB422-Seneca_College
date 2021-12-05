@@ -7,6 +7,8 @@ import { AlbumComponent } from './album/album.component';
 import { ArtistDiscographyComponent } from './artist-discography/artist-discography.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'search', component: SearchResultComponent },
   { path: 'favourites', component: FavouritesComponent },
   { path: '', redirectTo: '/newReleases', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
